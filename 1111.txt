@@ -1,0 +1,19 @@
+查看时间：display close
+
+clock datetime 10:25:30 2023-09-16
+undo info-center enable 
+
+密码认证：
+[SW1-ui-console0]set authentication password ?(simple密码是明文存储的，看配置的时候能够直接看到密码是什么，另外的就是看到一串乱码)
+  cipher  Set the password with cipher text
+  simple  Set the password in plain text
+
+ensp:3a认证配置:
+[SW1-ui-console0]authentication-mode aaa
+[SW1-ui-console0]q	
+[SW1-aaa]local-user Sjc password cipher abc.123
+undo authentication-mode 
+
+取消3A认证:	
+[SW1]user-interface console 0
+[SW1-ui-console0]undo authentication-mode aaa

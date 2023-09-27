@@ -17,3 +17,7 @@ undo authentication-mode
 取消3A认证:	
 [SW1]user-interface console 0
 [SW1-ui-console0]undo authentication-mode aaa
+
+
+
+history

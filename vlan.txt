@@ -1,0 +1,30 @@
+交换机三种端口模式Access、Hybrid和Trunk的详解
+Access类型端口：只能属于1个VLAN，一般用于(连接计算机)端口；
+
+Trunk类型端口：可以允许多个VLAN通过,可以接收和发送多个VLAN 报文,
+
+一般用于(交换机)与(交换机)相关的接口。
+
+Hybrid类型端口：可以允许多个VLAN通过，可以接收和发送多个VLAN 报文，
+
+可以用于(交换机)的间连接也可以用于连接用户计算机。
+
+
+
+交换机配置交换机：
+sys
+vlan ? （创建vlan）(vlan batch 10 20)创建多个vlan 
+description vlan ? (给交换机起名字或描述)
+interface g/e （进入接口)
+port link-type (access/trunk)
+port default  vlan  ? 绑定 vlan 
+
+port-group 1
+group-mem e0/0/1 to e0/0/20
+port link-type access
+port def vlan 10/20
+
+interface GigabitEthnet 0/0/1
+进入接口 undo negotiation auto
+关掉自动协商功能 duplex full //全双工
+speed 100 //接口速率调整为100Mbit/s
